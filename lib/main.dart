@@ -1,5 +1,7 @@
 import 'package:expences/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -32,8 +34,12 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.teal[300],
-        title: Text('Personal Expences', style: TextStyle(color: Colors.black),),
+      appBar: AppBar(
+        backgroundColor: Colors.teal[300],
+        title: Text(
+          'Personal Expences',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -65,7 +71,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$${tx.amount}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -76,12 +82,21 @@ class MyHomePage extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(tx.title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),),
                         Text(
-                          tx.date.toString(), style: TextStyle(color: Colors.grey,),
+                          tx.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          DateFormat('dd MMMM yyyy H:mm').format(tx.date),
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               );
