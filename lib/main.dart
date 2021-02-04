@@ -14,8 +14,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +23,12 @@ class MyHomePage extends StatelessWidget {
           'Personal Expences',
           style: TextStyle(color: Colors.black),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add_box_outlined, color: Colors.black,),
+            onPressed: () {},
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -42,6 +46,12 @@ class MyHomePage extends StatelessWidget {
             UserTransactions(),
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat, 
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal[300],
+        child: Icon(Icons.add_box_outlined, color: Colors.black,),
+        onPressed: () {},
       ),
     );
   }
