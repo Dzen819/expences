@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:expences/widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Personal Expences',
+      theme: ThemeData(
+          primarySwatch: Colors.teal,
+          accentColor: Colors.red,
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              )),
+          appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                      headline6: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20,
+                  )))),
       home: MyHomePage(),
     );
   }
@@ -69,16 +87,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal[300],
         title: Text(
           'Personal Expences',
-          style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.add_box_outlined,
-              color: Colors.black,
             ),
             onPressed: () => _openAddTransactionWindow(context),
           )
@@ -92,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.teal[300],
+                color: Theme.of(context).primaryColorLight,
                 child: Text('CHART!'),
                 elevation: 5,
               ),
@@ -103,10 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.teal[300],
         child: Icon(
           Icons.add_box_outlined,
-          color: Colors.black,
         ),
         onPressed: () => _openAddTransactionWindow(context),
       ),
